@@ -1,0 +1,81 @@
+
+from Crypto.Signature import PKCS1_PSS
+from Crypto.Hash import SHA256
+from Crypto.PublicKey import RSA
+from Crypto import Random
+from Crypto.Protocol.KDF import PBKDF2
+
+def off():
+    pass
+
+
+from base64 import b64encode, b64decode
+
+m = b'test'
+
+ # = RSA.importKey(open('user-keys/privkey.pem').read())
+# print(b64encode(priv_key.exportKey()).decode())
+# h = SHA256.new(m)
+# signer = PKCS1_PSS.new(priv_key)	# salt ?
+# signature = signer.sign(h)
+#
+# print('bytes sig:',signature)
+#
+#     # # m_sig = (m, signature)
+#     #
+#     # ###		Verify sig
+#     #
+
+pub_key = RSA.importKey(open('user-keys/pubkey.pem').read()).exportKey()
+pub_key = RSA.importKey(pub_key)
+print(pub_key.exportKey())
+
+# # print('pk:',pub_key.exportKey())
+# h = SHA256.new(m)
+# verifier = PKCS1_PSS.new(pub_key)
+# if verifier.verify(h, signature):
+#     print('The signature is authentic.')
+# else:
+#     print('The signature is not authentic.')
+
+    # m='test'.encode()
+    # h = SHA256.new()
+    # h.update(m)
+    # hd=h.hexdigest()
+    # print(hd)
+
+    # sigBm=m+sig(hd)
+
+
+
+
+    ###########		Private Channel
+
+
+    #####	1.User generates AES key
+
+    #####   2.User sends info to broker
+
+    #####   3.User recvs pubk
+
+    #####   4.User encs sigb then k then sends
+
+
+#   U gens h chain
+
+
+
+# if __name__ == '__main__':
+#     pass
+    # n = 10
+    # last_pw = Random.get_random_bytes(SHA256.digest_size)
+    # pw_chain = [last_pw]
+    # for _ in range(n):
+    #     last_pw = SHA256.new(pw_chain[-1]).digest()
+    #     pw_chain.append(last_pw)
+    # print('n:',n,'len(pw_chain):',len(pw_chain),'\n')
+    # for i in pw_chain: print(i)
+
+
+
+
